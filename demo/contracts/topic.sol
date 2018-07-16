@@ -1,27 +1,40 @@
 pragma solidity ^0.4.24;
 
-import "user.sol";
+//import "../contracts/user.sol";
 
 contract topic {
 
     struct topicStruct {
       string title;
-      messegeStruct[] messege;
+      mapping (uint => messegeStruct) messegeStructMap;    //第一条消息为话题的介绍
+      address user;
+      uint time;
+      uint messegeSize;
       uint index;
     }
 
     struct messegeStruct {
       string messege;
+      address user;
+      uint time;
       uint index;
     }
 
-    topicStruct[] topicStructs;
-    string[] titles;
+    string[] titles;               //存储所有标题
 
-    mapping (string => topicStruct) topicStructMap;
-    
+    mapping (string => topicStruct) topicStructMap;   //标题对应话题
 
-    function createTopic(string _title, address _topicer) public returns () {
+    function createTopic(string _title, string _topicMessege) public returns (uint) {
+      titles.push(_title);
 
+      topicStructMap[_title] = topicStruct({
+                                  title : _title,
+                                  user : msg.sender,
+                                  time : now,
+                                  messegeSize : 1,
+                                  index : titles.length
+        });
+      topicStructMap[_title].messegeStructMap[0] = messegeStruct(_topicMessege,msg.sender,now,1);
+      return titles.length;
     }
 }
