@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-//import "../contracts/user.sol";
+import "../contracts/user.sol";
 
 contract topic {
 
@@ -21,10 +21,11 @@ contract topic {
     }
 
     string[] titles;               //存储所有标题
+    user u;
 
     mapping (string => topicStruct) topicStructMap;   //标题对应话题
 
-    function createTopic(string _title, string _topicMessege) public returns (uint) {
+    function createTopic(string _title, string _topicMessege) public returns (uint) {//创建话题,返回index
       titles.push(_title);
 
       topicStructMap[_title] = topicStruct({
@@ -36,5 +37,14 @@ contract topic {
         });
       topicStructMap[_title].messegeStructMap[0] = messegeStruct(_topicMessege,msg.sender,now,1);
       return titles.length;
+    }
+
+    function createMessege(string _messege, string _title) public returns(uint){ //在话题下追加消息，返回index
+      require(u.userAddressExist(msg.sender));//检验账户是否存在
+
+      topicStruct storage thisTopic = topicStructMap[_title];
+      thisTopic.messegeStructMap[thisTopic.messegeSize] = messegeStruct(_messege, msg.sender, now,thisTopic.messegeSize + 1);
+      thisTopic.messegeSize++;
+      return thisTopic.messegeSize;
     }
 }
