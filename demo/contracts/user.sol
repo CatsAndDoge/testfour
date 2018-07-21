@@ -2,11 +2,11 @@ pragma solidity ^0.4.24;
 
 contract user {
 
-  struct userStruct {
+    struct userStruct {
     string userName;
     address userAddress;
     uint index;
-  }
+}
 
   struct userListStruct {
     address userAddress;
@@ -20,35 +20,35 @@ contract user {
   mapping (address => userStruct) userMap;                 //便于用地址查找用户名
 
   function userNameExist(string _userName) public constant returns (bool) {   //检验用户名是否存在
-    if( userNames.length == 0) return false;
+    if( userNames.length == 0)    return false;
     return (keccak256(userNames[userListMap[_userName].index]) == keccak256(_userName));
   }//string 不能直接用==比较，使用hash函数转换比较较为便捷
 
   function userAddressExist(address _userAddress)public constant returns (bool) {    //检验地址是否存在
-    if(userAddresses.length == 0) return false;
+    if(userAddresses.length == 0)    return false;
     return  (userAddresses[userMap[_userAddress].index] == _userAddress);
   }
 
-function createUser (string _userName, address _userAddress)public returns (uint) {   //创建用户返回index
-  require(!userAddressExist(_userAddress));
+function createUser (string _userName)public returns (uint) {   //创建用户返回index
+  require(!userAddressExist(msg.sender));
   require(!userNameExist(_userName));
 
-  userAddresses.push(_userAddress);
+  userAddresses.push(msg.sender);
   userNames.push(_userName);
 
-  userMap[_userAddress] = userStruct({
+  userMap[msg.sender] = userStruct({
                                          userName : _userName,
-                                         userAddress : _userAddress,
-                                         index : userNames.length - 1
+                                         userAddress : msg.sender,
+                                         index : userAddresses.length - 1
     });
   userListMap[_userName] = userListStruct({
-                                            userAddress : _userAddress,
-                                            index : userAddresses.length - 1
+                                            userAddress : msg.sender,
+                                            index : userNames.length - 1
     });
     return userAddresses.length - 1;
 }
 
-function inquireUser(address _userAddress)public constant returns (string, address, uint) {   //根据地址查找用户信息
+function inquireUserA(address _userAddress)public constant returns (string, address, uint) {   //根据地址查找用户信息
   require(userAddressExist(_userAddress));
 
   return (
@@ -56,6 +56,29 @@ function inquireUser(address _userAddress)public constant returns (string, addre
     userMap[_userAddress].userAddress,
     userMap[_userAddress].index
     );
+}
+
+function inquireUserN(string _userName)public constant returns (string, address, uint) {   //根据用户名查找用户信息
+  require(userNameExist(_userName));
+  address _userAddress = userListMap[_userName].userAddress;
+
+  return (
+    userMap[_userAddress].userName,
+    userMap[_userAddress].userAddress,
+    userMap[_userAddress].index
+    );
+}
+
+function changeUserName(string _name)public returns (bool) { //修改用户姓名
+    
+}
+
+/*
+                   以及修改其余用户信息的函数
+*/
+
+function deleteUser()public returns (bool){ //删除用户信息，删除成功返回true
+    
 }
 
 }
