@@ -4,7 +4,7 @@ contract Demo {
   uint num;
 
   function mix(uint i) public returns (uint) {
-    return i * 2; 
+    return i * 2;
   }
 
 }
