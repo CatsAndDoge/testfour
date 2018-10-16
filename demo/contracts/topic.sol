@@ -17,6 +17,7 @@ contract topic {
       string messege;
       address user;
       uint time;
+      string [] secondaryMessege;
       uint index;
     }
 
@@ -35,7 +36,7 @@ contract topic {
                                   messegeSize : 1,
                                   index : titles.length
         });
-      topicStructMap[_title].messegeStructMap[0] = messegeStruct(_topicMessege,msg.sender,now,1);
+      topicStructMap[_title].messegeStructMap[0] = messegeStruct(_topicMessege,msg.sender,now,"",1);
       return titles.length;
     }
 
