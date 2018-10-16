@@ -19,6 +19,8 @@ contract user {
   mapping (string => userListStruct) userListMap;          //便于用用户名查找地址
   mapping (address => userStruct) userMap;                 //便于用地址查找用户名
 
+  event printUserName(string _name);
+
   function userNameExist(string _userName) public constant returns (bool) {   //检验用户名是否存在
     if( userNames.length == 0)    return false;
     return (keccak256(userNames[userListMap[_userName].index]) == keccak256(_userName));
@@ -45,6 +47,8 @@ function createUser (string _userName)public returns (uint) {   //创建用户�
                                             userAddress : msg.sender,
                                             index : userNames.length - 1
     });
+
+    printUserName(_userName);
     return userAddresses.length - 1;
 }
 
@@ -70,7 +74,22 @@ function inquireUserN(string _userName)public constant returns (string, address,
 }
 
 function changeUserName(string _name)public returns (bool) { //修改用户姓名
+    require(userAddressExist(msg.sender));
+
+    string initName = userMap[msg.sender].userName;
+    uint initIndex = userMap[msg.sender].index;
+
+    delete userListMap[initName];
+    userListMap[_name] = userListStruct({
+                                            userAddress : msg.sender,
+                                            index : initIndex
+    });
+    userMap[msg.sender].userName = _name;
+
+    userNames[initIndex] = _name;
+    printUserName(_name);
     
+    return true;
 }
 
 /*
