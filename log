@@ -1,0 +1,4 @@
+2018.10.22
+    user实现了基本的增删查改，但还未经过测试。
+    testUser初步完成，返回多个对象的函数，如：inquireUserA 以及 inquireUserN可能会出现问题。待测试。
+    topic的存储结构有待商榷。
