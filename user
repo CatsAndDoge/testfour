@@ -12,3 +12,6 @@ changeUserName(string _name) public returns (bool)
 
 deleteUser() public returns (bool)
     删除用户信息，删除成功返回true
+
+event printUserName(String_name)  
+    监听事件，返回用户名
