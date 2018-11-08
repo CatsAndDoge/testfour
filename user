@@ -1,3 +1,9 @@
+userNameExist(string _userName) returns (bool)
+    检查用户名是否存在
+
+userAddressExist(address _userAddress) returns (bool)
+    检查地址是否存在
+
 createUser(string _userName) public returns (uint)
 	创建用户，输入用户名，返回排序号
 

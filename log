@@ -12,3 +12,6 @@
 
 2018.11.8
     新增pages大类，用于对话题的分类操作
+    修改了user中userNameExist和userAddressExist的权限，将其改为public.
+    继续实现了topic中的部分功能,但在返回用户所有topicStruct或messegeStruct的index上遇到了问题，由于mapping是没有长度概念的，所以在遍历中无法确认其边界
+    将现有代码compile，修正了所有的error,warning部分暂未修改。

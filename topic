@@ -1,6 +1,9 @@
 createTopic(string _title, string _topicMessege) returns(uint)
 	创建话题，输入标题，描述性名字，返回排序号
 
+changeTopic(string _title, string _topicmessege) returns(uint)
+    修改话题信息，返回话题编号
+
 createMessege(string _messege, string _title) returns(uint)
 	在话题下创建消息，输入消息内容，所在话题，返回排序号
 
@@ -8,8 +11,7 @@ topicExist(string _title) returns(bool)
     检验话题是否存在
 
 inquireTopicIndex(string _title) returns(uint)
-    通过话题标题查找话题编号
+    通过话题标题查找话题排序号
 
-changeTopic(string _title, string _topicmessege) returns(uint)
-    修改话题信息，返回话题编号
-
+changeMessege(string _title, uint _index, string _messege) returns(uint)
+    修改话题下的信息，返回排序号
