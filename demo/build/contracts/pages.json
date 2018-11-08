@@ -1,0 +1,119 @@
+{
+  "contractName": "pages",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a723058207614a3fcb42f5b6d733bb237a518ccc3aa8d544b6771f1aae8c7e688bda991690029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a723058207614a3fcb42f5b6d733bb237a518ccc3aa8d544b6771f1aae8c7e688bda991690029",
+  "sourceMap": "26:62:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:62:2;;;;;;;",
+  "deployedSourceMap": "26:62:2:-;;;;;",
+  "source": "pragma solidity ^0.4.24;\n\ncontract pages {\n    struct pagesStruct{\n        \n    }\n    \n}",
+  "sourcePath": "/home/hw/Information-Exchange-DAPP/demo/contracts/pages.sol",
+  "ast": {
+    "absolutePath": "/home/hw/Information-Exchange-DAPP/demo/contracts/pages.sol",
+    "exportedSymbols": {
+      "pages": [
+        77
+      ]
+    },
+    "id": 78,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 75,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 77,
+        "linearizedBaseContracts": [
+          77
+        ],
+        "name": "pages",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "pages.pagesStruct",
+            "id": 76,
+            "members": [],
+            "name": "pagesStruct",
+            "nodeType": "StructDefinition",
+            "scope": 77,
+            "src": "47:34:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 78,
+        "src": "26:62:2"
+      }
+    ],
+    "src": "0:88:2"
+  },
+  "legacyAST": {
+    "absolutePath": "/home/hw/Information-Exchange-DAPP/demo/contracts/pages.sol",
+    "exportedSymbols": {
+      "pages": [
+        77
+      ]
+    },
+    "id": 78,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 75,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:2"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 77,
+        "linearizedBaseContracts": [
+          77
+        ],
+        "name": "pages",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "pages.pagesStruct",
+            "id": 76,
+            "members": [],
+            "name": "pagesStruct",
+            "nodeType": "StructDefinition",
+            "scope": 77,
+            "src": "47:34:2",
+            "visibility": "public"
+          }
+        ],
+        "scope": 78,
+        "src": "26:62:2"
+      }
+    ],
+    "src": "0:88:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "2.0.1",
+  "updatedAt": "2018-11-08T08:30:32.278Z"
+}

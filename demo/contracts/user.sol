@@ -21,12 +21,12 @@ contract user {
 
     event printUserName(string _name);
 
-    function userNameExist(string _userName) private constant returns (bool) {   //检验用户名是否存在
+    function userNameExist(string _userName) public constant returns (bool) {   //检验用户名是否存在
       if( userNames.length == 0)    return false;
       return (keccak256(userNames[userListMap[_userName].index]) == keccak256(_userName));
     }//string 不能直接用==比较，使用hash函数转换比较较为便捷
 
-    function userAddressExist(address _userAddress)private constant returns (bool) {    //检验地址是否存在
+    function userAddressExist(address _userAddress)public constant returns (bool) {    //检验地址是否存在
       if(userAddresses.length == 0)    return false;
       return  (userAddresses[userMap[_userAddress].index] == _userAddress);
     }
@@ -48,7 +48,7 @@ contract user {
                                             index : userNames.length - 1
       });
 
-      printUserName(_userName);
+      printUserName(_userName);                                                     //监听事件，返回用户名
       return userAddresses.length - 1;
     }
 
