@@ -1,3 +1,9 @@
+userNameExist(string _userName) returns (bool)
+    检查用户名是否存在
+
+userAddressExist(address _userAddress) returns (bool)
+    检查地址是否存在
+
 createUser(string _userName) public returns (uint)
 	创建用户，输入用户名，返回排序号
 
@@ -12,3 +18,6 @@ changeUserName(string _name) public returns (bool)
 
 deleteUser() public returns (bool)
     删除用户信息，删除成功返回true
+
+event printUserName(String_name)  
+    监听事件，返回用户名

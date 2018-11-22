@@ -1,0 +1,17 @@
+2018.10.22
+    user实现了基本的增删查改，但还未经过测试。
+    testUser初步完成，返回多个对象的函数，如：inquireUserA 以及 inquireUserN可能会出现问题。待测试。
+    topic的存储结构有待商榷。
+
+2018.11.1
+    topic新增了topicListStruct结构以及topicListStructMap映射来辅助topicStruct的查询，同时修改了tpicStructMap的key。
+同时也删除了messegeStruct中的映射。
+    稍稍调整了代码顺序，优化了部分代码内容，新增了topicExist（检验话题是否存在）函数、inquireTopicIndex(通过标题查询序号)函数。
+    topic实现了话题的增改，话题下信息的增改。
+    testtopic还未动手。
+
+2018.11.8
+    新增pages大类，用于对话题的分类操作
+    修改了user中userNameExist和userAddressExist的权限，将其改为public.
+    继续实现了topic中的部分功能,但在返回用户所有topicStruct或messegeStruct的index上遇到了问题，由于mapping是没有长度概念的，所以在遍历中无法确认其边界
+    将现有代码compile，修正了所有的error,warning部分暂未修改。

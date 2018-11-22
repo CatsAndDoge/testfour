@@ -21,14 +21,14 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5060bb8061001f6000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806383d1f1aa146044575b600080fd5b348015604f57600080fd5b50606c600480360381019080803590602001909291905050506082565b6040518082815260200191505060405180910390f35b60006002820290509190505600a165627a7a723058207ad372850d05e7e4a3916dc0a61f2ce7f947371512f6c11129f814c30cf14e7e0029",
-  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806383d1f1aa146044575b600080fd5b348015604f57600080fd5b50606c600480360381019080803590602001909291905050506082565b6040518082815260200191505060405180910390f35b60006002820290509190505600a165627a7a723058207ad372850d05e7e4a3916dc0a61f2ce7f947371512f6c11129f814c30cf14e7e0029",
-  "sourceMap": "26:101:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:101:0;;;;;;;",
-  "deployedSourceMap": "26:101:0:-;;;;;;;;;;;;;;;;;;;;;;;;57:67;;8:9:-1;5:2;;;30:1;27;20:12;5:2;57:67:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;94:4;117:1;113;:5;106:12;;57:67;;;:::o",
-  "source": "pragma solidity ^0.4.24;\n\ncontract Demo {\n  uint num;\n\n  function mix(uint i) public returns (uint) {\n    return i * 2; \n  }\n\n}\n",
-  "sourcePath": "/home/hw/testfour/demo/contracts/Demo.sol",
+  "bytecode": "0x608060405234801561001057600080fd5b5060bb8061001f6000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806383d1f1aa146044575b600080fd5b348015604f57600080fd5b50606c600480360381019080803590602001909291905050506082565b6040518082815260200191505060405180910390f35b60006002820290509190505600a165627a7a7230582023acc0795153867223e3eb69d87657f120b59cb58b26acfcd2fec87bcc6db2300029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806383d1f1aa146044575b600080fd5b348015604f57600080fd5b50606c600480360381019080803590602001909291905050506082565b6040518082815260200191505060405180910390f35b60006002820290509190505600a165627a7a7230582023acc0795153867223e3eb69d87657f120b59cb58b26acfcd2fec87bcc6db2300029",
+  "sourceMap": "26:100:0:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;26:100:0;;;;;;;",
+  "deployedSourceMap": "26:100:0:-;;;;;;;;;;;;;;;;;;;;;;;;57:66;;8:9:-1;5:2;;;30:1;27;20:12;5:2;57:66:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;94:4;117:1;113;:5;106:12;;57:66;;;:::o",
+  "source": "pragma solidity ^0.4.24;\n\ncontract Demo {\n  uint num;\n\n  function mix(uint i) public returns (uint) {\n    return i * 2;\n  }\n\n}\n",
+  "sourcePath": "/home/hw/Information-Exchange-DAPP/demo/contracts/Demo.sol",
   "ast": {
-    "absolutePath": "/home/hw/testfour/demo/contracts/Demo.sol",
+    "absolutePath": "/home/hw/Information-Exchange-DAPP/demo/contracts/Demo.sol",
     "exportedSymbols": {
       "Demo": [
         16
@@ -91,7 +91,7 @@
             "body": {
               "id": 14,
               "nodeType": "Block",
-              "src": "100:24:0",
+              "src": "100:23:0",
               "statements": [
                 {
                   "expression": {
@@ -227,20 +227,20 @@
               "src": "93:6:0"
             },
             "scope": 16,
-            "src": "57:67:0",
+            "src": "57:66:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17,
-        "src": "26:101:0"
+        "src": "26:100:0"
       }
     ],
-    "src": "0:128:0"
+    "src": "0:127:0"
   },
   "legacyAST": {
-    "absolutePath": "/home/hw/testfour/demo/contracts/Demo.sol",
+    "absolutePath": "/home/hw/Information-Exchange-DAPP/demo/contracts/Demo.sol",
     "exportedSymbols": {
       "Demo": [
         16
@@ -303,7 +303,7 @@
             "body": {
               "id": 14,
               "nodeType": "Block",
-              "src": "100:24:0",
+              "src": "100:23:0",
               "statements": [
                 {
                   "expression": {
@@ -439,17 +439,17 @@
               "src": "93:6:0"
             },
             "scope": 16,
-            "src": "57:67:0",
+            "src": "57:66:0",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 17,
-        "src": "26:101:0"
+        "src": "26:100:0"
       }
     ],
-    "src": "0:128:0"
+    "src": "0:127:0"
   },
   "compiler": {
     "name": "solc",
@@ -464,5 +464,5 @@
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2018-07-12T07:33:40.470Z"
+  "updatedAt": "2018-11-08T08:30:32.288Z"
 }
