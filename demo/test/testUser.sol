@@ -14,10 +14,10 @@ contract testUser{
         Assert.equal(testIndex, index, "createuser is false");
     }
 
-   function testInquireUserA() public{            //测试通过地址查询用户信息
-        //string testName = "yellow Tang";
-        //address testAddress = msg.sender;
-        string testName;
+ /*   function testInquireUserA() public{            //测试通过地址查询用户信息
+        string testName = "yellow Tang";
+        address testAddress = msg.sender;
+        string  testName;
         address testAddress;
         uint testIndex;
         (testName, testAddress, testIndex) = _user.inquireUserA(msg.sender);
@@ -27,7 +27,7 @@ contract testUser{
         Assert.equal(testIndex, 0, "index of inquireuserA is false");
     }
 
-  /*   function testInquireuserN() public{            //测试通过用户名查询用户信息
+    function testInquireuserN() public{            //测试通过用户名查询用户信息
         string testName = "yellow Tang";
         address testAddress = msg.sender;
         uint testIndex = 0;

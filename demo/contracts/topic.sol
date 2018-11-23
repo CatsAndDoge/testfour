@@ -7,7 +7,8 @@ contract topic {
 
     struct topicStruct {                                      //话题结构
       string title;
-      mapping (uint => messegeStruct) messegeStructMap;    //第一条消息为话题的介绍
+      //mapping (uint => messegeStruct) messegeStructMap;    
+      uint[] indexs;                                        //存储该话题下的所有信息的index,第一条消息为话题的介绍
       address user;
       string pages;                                        //用于存储话题所属的分类
       uint time;
@@ -26,13 +27,14 @@ contract topic {
       uint time;
       uint index;
     }
-
+    
 
     string[] titles;               //存储所有标题
+    messegeStruct[] messeges;      //存储所有信息
     user u;
 
     mapping (uint => topicStruct) topicStructMap;   //话题序号对应话题
-    mapping (string => topicListStruct) topicListStructMap;    //话题标题对应话题序号
+    mapping (string => topicListStruct) topicListStructMap;    //话题标题对应话题序
 
     function topicExist(string _title) public returns (bool) {                     //检验话题是否存在
         if (titles.length == 0)    return false;
@@ -45,7 +47,17 @@ contract topic {
 
     function createTopic(string _title, string _topicMessege, string _pages) public returns (uint) { //创建话题,返回index
       require(!topicExist(_title));                               //检验话题是否存在
-      titles.push(_title);                           
+
+      titles.push(_title);   
+      messeges.push(messegeStruct({                                  //生成新的信息结构并放入数组中
+                                    messege : _topicMessege,
+                                    user : msg.sender,
+                                    time : now,
+                                    index : messeges.length
+      }));
+
+      uint[] memory idxs = new uint[](1);             //建立用于信息序号的数组
+      idxs[0] = messeges.length - 1;                  //将第一条信息，即话题的简介的序号放入数组第一个
 
       topicListStructMap[_title] = topicListStruct({
                                 title : _title,
@@ -54,13 +66,14 @@ contract topic {
 
       topicStructMap[titles.length] = topicStruct({
                                   title : _title,
+                                  indexs : idxs,
                                   user : msg.sender,
                                   pages: _pages,
                                   time : now,
                                   messegeSize : 1,
                                   index : titles.length
         });
-      topicStructMap[titles.length].messegeStructMap[0] = messegeStruct(_topicMessege,msg.sender,now,0);
+      //topicStructMap[titles.length].messegeStructMap[0] = messegeStruct(_topicMessege,msg.sender,now,0);
       return titles.length;
     }
 
@@ -71,14 +84,16 @@ contract topic {
         topicStruct thisTopic = topicStructMap[inquireTopicIndex(_title)];
 
         require(msg.sender == thisTopic.user);                //检验是否是题主
-        thisTopic.messegeStructMap[0].messege=_topicMessege;
+        //thisTopic.messegeStructMap[0].messege=_topicMessege;
+        messeges[thisTopic.indexs[0]].messege = _topicMessege;
+        messeges[thisTopic.indexs[0]].time = now;
 
         return thisTopic.index;
         
     }
-/*
-    function showTopicIndex() public returns (uint[]){                //返回用户的所有话题的index
-        require(user.userAddressExist(msg.sender));                      //检验用户是否存在
+
+ /*   function showTopicIndex() public returns (uint[]){                //返回用户的所有话题的index
+        require(u.userAddressExist(msg.sender));                      //检验用户是否存在
         //
     }
 
@@ -100,9 +115,16 @@ contract topic {
       require(topicExist(_title));                                                       //检验话题是否存在
 
       topicStruct  thisTopic = topicStructMap[topicListStructMap[_title].index];
-      thisTopic.messegeStructMap[thisTopic.messegeSize] = messegeStruct(_messege, msg.sender, now,thisTopic.messegeSize);
-      thisTopic.messegeSize++;
-      return thisTopic.index;
+      //thisTopic.messegeStructMap[thisTopic.messegeSize] = messegeStruct(_messege, msg.sender, now,thisTopic.messegeSize);
+      //thisTopic.messegeSize++;
+      messeges.push(messegeStruct({
+                                    messege : _messege,
+                                    user : msg.sender,
+                                    time : now,
+                                    index : messeges.length
+      }));
+      thisTopic.indexs.push(messeges.length - 1);
+      return messeges.length - 1;
     }
 /*
     function showMessegeIndex() public returns (uint[]){                      //返回用户的所有消息的index
@@ -115,7 +137,7 @@ contract topic {
         require(topicExist(_title));                                                 //检验话题是否存在
 
         topicStruct thisTopic = topicStructMap[inquireTopicIndex(_title)];
-        messegeStruct thisMessege = thisTopic.messegeStructMap[_index];
+        messegeStruct thisMessege = messeges[_index];
         require(msg.sender == thisMessege.user);                                    //检验是否是答主
         thisMessege.messege = _messege;
 
